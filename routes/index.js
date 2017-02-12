@@ -1,17 +1,15 @@
 var express = require('express');
 var router = express.Router();
 const axios = require('axios');
-const darksky = require('../api-helpers/darksky');
-const googlemap = require('../api-helpers/googlemap');
+const apiCall = require('../api-helpers/api-calls');
 require('dotenv').config();
 
 
-router.get('/', darksky.darkskyCall,  googlemap.mapCall, function(req, res, next) {
+router.get('/', apiCall.apiCalls, function(req, res, next) {
   const temp = Math.round(res.locals.response.data.currently.temperature);
   const summary = res.locals.response.data.currently.summary;
-  const lat = res.locals.location.data.results[0].geometry.location.lat;
-  const lng = res.locals.location.data.results[0].geometry.location.lng;
-    res.render('index', { temp, summary, lat, lng });
+
+    res.render('index', { temp, summary });
     });
 
 
