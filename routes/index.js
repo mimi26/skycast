@@ -19,7 +19,13 @@ router.post('/', apiCall.geocodeCall, apiCall.darkSkyCall, function(req, res, ne
   const summary = res.locals.summary;
   const geoLocateTemp = undefined;
   const geoLocateSum = undefined;
-  res.render('index', { city, neighborhood, temp, summary, geoLocateTemp, geoLocateSum
+  res.render('index', {
+    city: city,
+    neighborhood: neighborhood,
+    temp: temp,
+    summary: summary,
+    geoLocateTemp: geoLocateTemp,
+    geoLocateSum: geoLocateSum
    });
 });
 
