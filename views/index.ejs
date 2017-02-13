@@ -5,12 +5,17 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+  <div class="container">
+  <h1>SkyCast Weather</h1>
+  <h2>Check the weather in your neighborhood</h2>
 <form action='/' method="POST">
-<input type="text" name="address"/>
+<input type="text" name="address" placeholder="Enter Address" />
 <button type="submit" name="action">Submit</button>
 </form>
-
+<h1><%= neighborhood %>, <%= city %></h1>
 <h1>Temperature: <%= temp %>  °F</h1>
 <h1>Summary: <%= summary %></h1>
+</div>
+<footer><a href="https://darksky.net/poweredby/" target="_blank">Powered by Dark Sky</a></footer>
   </body>
 </html>
