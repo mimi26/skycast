@@ -7,42 +7,28 @@ require('dotenv').config();
 
 
 router.get('/', function(req, res, next) {
-
-
-    res.render('index');
-    });
+  res.render('index');
+});
 
 router.post('/', function(req, res, next) {
-  models.Address.create({
-    address: req.body.address
-  }).then((data) => {
-    res.locals.address = data.dataValues.address.replace(/ /g, "+");
-    console.log('this address in post:', res.locals.address);
-
-  }).then(() => {return next();})
-    res.redirect('/');
-  })
-
-
-router.get('/', function(req, res, next) {
-  axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${res.locals.address}&key=${process.env.MAP_KEY}`)
+  const address = req.body.address.replace(/ /g, "+");
+  axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.MAP_KEY}`)
   .then((info) => {
     const lat = info.data.results[0].geometry.location.lat;
     const lng = info.data.results[0].geometry.location.lng;
-    //res.locals.location = location;
-  axios.get(`https://api.darksky.net/forecast/${process.env.WEATHER_KEY}/${lat},${lng}`)
-  .then((response) => {
+    return axios.get(`https://api.darksky.net/forecast/${process.env.WEATHER_KEY}/${lat},${lng}`)
+  })
+  .then((weather) => {
+      const temp = Math.round(weather.data.currently.temperature);
+      const summary = weather.data.currently.summary;
+      const city = weather.data.timezone.replace(/^[^/]*\//g, "").replace(/_/g, " ");
+      console.log('this is city:', city);
 
-    const temp = response.data.currently.temperature;
-    const summary = response.data.currently.summary;
+    res.render('index', { temp, summary });
+     });
+  });
 
 
-    })
-    })
-
-  console.log('this is temp:', temp);
-  res.render('index');
-});
 
 
 
