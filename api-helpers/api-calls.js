@@ -14,7 +14,7 @@ function geocodeCall (req, res, next) {
     res.locals.city = info.data.results[0].address_components[3].long_name;
     res.locals.neighborhood = info.data.results[0].address_components[2].long_name;
 
-    return next();
+    return next();//like a boss
   });
 }
 
@@ -27,8 +27,22 @@ function darkSkyCall (req, res, next) {
      });
 }
 
+function geoLocateCall (req, res, next) {
+  axios.post(`https://www.googleapis.com/geolocation/v1/geolocate?key=${process.env.MAP_KEY}`)
+  .then((response) => {
+    const lat = response.data.location.lat;
+    const lng = response.data.location.lng;
+    return axios.get(`https://api.darksky.net/forecast/${process.env.WEATHER_KEY}/${lat},${lng}`)
+    }).then((response) => {
+      res.locals.temperature = Math.round(response.data.currently.temperature);
+      res.locals.geolocatesum = response.data.currently.summary;
+      return next();
+    });
+}
+
 
 module.exports = {
   geocodeCall,
-  darkSkyCall
+  darkSkyCall,
+  geoLocateCall
  };

@@ -17,3 +17,10 @@ a {
 h1, h2, form {
   align-self: center;
 }
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 200px;
+  font-size: 12px;
+}
