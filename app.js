@@ -13,7 +13,7 @@ const userRoutes = require('./routes/user.js');
 const app = express();
 // load environment variables
 require('dotenv').config();
-var users = require('./routes/users');
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
