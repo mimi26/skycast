@@ -9,7 +9,7 @@ router.get('/', apiCall.geoLocateCall, function(req, res, next) {
   const geoLocateTemp = res.locals.temperature;
   const geoLocateSum = res.locals.geolocatesum;
   console.log('this is goelocatesum:', geoLocateSum);
-  res.render('index', { geoLocateTemp, geoLocateSum });
+  res.render('index', { geoLocateTemp, geoLocateSum, user: req.user });
 });
 
 router.post('/', apiCall.geocodeCall, apiCall.darkSkyCall, function(req, res, next) {
@@ -25,7 +25,8 @@ router.post('/', apiCall.geocodeCall, apiCall.darkSkyCall, function(req, res, ne
     temp: temp,
     summary: summary,
     geoLocateTemp: geoLocateTemp,
-    geoLocateSum: geoLocateSum
+    geoLocateSum: geoLocateSum,
+    user: req.user
    });
 });
 

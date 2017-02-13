@@ -6,7 +6,13 @@
   </head>
   <body>
   <div class="container">
+  <a href="/auth/register/">Register</a>
+  <% if (user) { %>
 
+  <a href="/auth/logout/">Logout</a>
+  <% } else { %>
+<a href="/auth/login/">Login</a>
+<% } %>
   <h1>SkyCast Weather</h1>
 
   <% if (geoLocateTemp!==undefined) { %>

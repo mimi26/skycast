@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-
 const authHelpers = require('../auth/auth-helpers');
 const passport = require('../auth/local');
 
@@ -19,6 +18,13 @@ router.post('/register', (req, res, next)  => {
 router.get('/login', authHelpers.loginRedirect, (req, res)=> {
   res.render('auth/login');
 });
+
+router.post('/login', passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/auth/login',
+    failureFlash: true
+  })
+);
 
 router.get('/logout', (req, res) => {
   req.logout();

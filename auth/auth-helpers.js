@@ -21,11 +21,8 @@ function createUser(req, res) {
   return models.User.create({
     username: req.body.username,
     password: hash,
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    dob: req.body.dob
-  }).then(() => {
+    email: req.body.email
+    }).then(() => {
     res.redirect('/');
   });
 }
