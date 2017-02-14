@@ -1,37 +1,31 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
+
+<% include partials/head.ejs %>
   <body>
-  <div class="container">
-  <a href="/auth/register/">Register</a>
-  <% if (user) { %>
-
-  <a href="/auth/logout/">Logout</a>
-  <% } else { %>
-<a href="/auth/login/">Login</a>
-<% } %>
-  <h1>SkyCast Weather</h1>
-
-  <% if (geoLocateTemp!==undefined) { %>
-  <h2>Current Weather In Your Area:</h2>
-<h1>Temp: <%= geoLocateTemp %> °F</h1>
-<h1><%= geoLocateSum %></h1>
-<% } else { %>
-<h2>Current Weather In <%= neighborhood %>, <%= city %></h2>
-<h1>Temperature: <%= temp %>  °F</h1>
-<h1>Summary: <%= summary %></h1>
-<% } %>
-  <h2>Check the weather anywhere</h2>
-<form action='/' method="POST">
-<input type="text" name="address" placeholder="Enter Address or Zip" />
-<button type="submit" name="action">Submit</button>
-</form>
-
-
-</div>
-<footer><a href="https://darksky.net/poweredby/" target="_blank">Powered by Dark Sky</a> Created by Mimi</footer>
+    <div class="container">
+      <div class="nav">
+        <a href="/auth/register/">Register</a>
+          <% if (user) { %>
+        <a href="/auth/logout/">Logout</a>
+          <% } else { %>
+        <a href="/auth/login/">Login</a>
+          <% } %>
+        </div>
+      <h1 class="title">SkyCast Weather</h1>
+        <% if (geoLocateTemp!==undefined) { %>
+      <h2>Current Weather In Your Area:</h2>
+      <h1 class="temp">Temp: <%= geoLocateTemp %> °F</h1>
+      <h1 class="temp"><%= geoLocateSum %></h1>
+        <% } else { %>
+      <h2>Current Weather In <%= neighborhood %>, <%= city %></h2>
+      <h1 class="temp">Temperature: <%= temp %>  °F</h1>
+      <h1 class="temp">Summary: <%= summary %></h1>
+        <% } %>
+      <h2>Check the weather anywhere</h2>
+      <form action='/' method="POST">
+        <input type="text" name="address" placeholder="Enter Address or Zip" />
+        <button type="submit" name="action">Submit</button>
+      </form>
+    </div>
+  <% include partials/footer.ejs %>
   </body>
 </html>

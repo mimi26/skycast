@@ -7,6 +7,19 @@ a {
   color: #00B7FF;
 }
 
+nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  font-family: 'Marcellus SC', serif;
+  font-size: 50px;
+}
+
+.temp {
+  font-family: 'Life Savers', cursive;
+}
 .container {
   display: flex;
   flex-direction: column;
