@@ -15,6 +15,8 @@ function geocodeCall (req, res, next) {
     res.locals.neighborhood = info.data.results[0].address_components[2].long_name;
 
     return next();//like a boss
+  }).catch((err) => {
+    console.log(err);
   });
 }
 
@@ -24,7 +26,9 @@ function darkSkyCall (req, res, next) {
       res.locals.temp = Math.round(weather.data.currently.temperature);
       res.locals.summary = weather.data.currently.summary;
       return next();
-     });
+     }).catch((err) => {
+      console.log(err);
+  });
 }
 
 function geoLocateCall (req, res, next) {
