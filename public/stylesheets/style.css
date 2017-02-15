@@ -18,16 +18,17 @@ nav {
 }
 
 .temp {
-  font-family: 'Life Savers', cursive;
-}
-.container {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
+  font-family: 'Poiret One', cursive;
 }
 
-h1, h2, form {
+.daily {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+h1, h2, h3, form {
   align-self: center;
 }
 
@@ -37,3 +38,4 @@ footer {
   margin-top: 200px;
   font-size: 12px;
 }
+

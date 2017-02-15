@@ -10,18 +10,42 @@
         <a href="/auth/login/">Login</a>
           <% } %>
         </div>
-      <h1 class="title">SkyCast Weather</h1>
+      <h1 class="title text-center">SkyCast Weather</h1>
         <% if (geoLocateTemp!==undefined) { %>
-      <h2>Current Weather In Your Area:</h2>
-      <h1 class="temp">Temp: <%= geoLocateTemp %> °F</h1>
-      <h1 class="temp"><%= geoLocateSum %></h1>
+      <h2 class="text-center">Current Weather In Your Area:</h2>
+      <h1 class="temp text-center">Temp: <%= geoLocateTemp %> °F</h1>
+      <h1 class="temp text-center"><%= geoLocateSum %></h1>
+      <h3 class="temp text-center">Next 8 Days:</h3>
+      <div class="forecast row">
+        <% geoForecast.forEach(function(data, index) { %>
+              <div class="daily col-md-3">
+                <p><%= moment.unix(data.time).format('ddd MMM Do') %></p>
+                <p>High: <%= Math.round(data.temperatureMax) %> °F</p>
+                <p>Low: <%= Math.round(data.temperatureMin) %> °F</p>
+                <p>Chance Of Rain: <%= parseInt(data.precipProbability * 100) %>%</p>
+              </div>
+
+        <% }); %>
+      </div>
         <% } else { %>
-      <h2>Current Weather In <%= neighborhood %>, <%= city %></h2>
-      <h1 class="temp">Temperature: <%= temp %>  °F</h1>
-      <h1 class="temp">Summary: <%= summary %></h1>
+      <h2 class="text-center">Current Weather In <%= neighborhood %>, <%= city %></h2>
+      <h1 class="temp text-center">Temperature: <%= temp %>  °F</h1>
+      <h1 class="temp text-center">Summary: <%= summary %></h1>
+      <h3 class="text-center">Next 8 Days:</h3>
+      <div class="forecast container row">
+        <% forecast.forEach(function(data, index) { %>
+              <div class="daily  text-center col-md-3" >
+                <p><b><%= moment.unix(data.time).format('ddd MMM Do') %></b></p>
+                <p>High: <%= Math.round(data.temperatureMax) %> °F</p>
+                <p>Low: <%= Math.round(data.temperatureMin) %> °F</p>
+                <p>Chance Of Rain: <%= parseInt(data.precipProbability * 100) %>%</p>
+              </div>
+
+        <% }); %>
+      </div>
         <% } %>
-      <h2>Check the weather anywhere</h2>
-      <form action='/' method="POST">
+      <h2 class="text-center">Check the weather anywhere</h2>
+      <form class="text-center" action='/' method="POST">
         <input type="text" name="address" placeholder="Enter Address or Zip" />
         <button type="submit" name="action">Submit</button>
       </form>

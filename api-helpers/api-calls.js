@@ -25,6 +25,7 @@ function darkSkyCall (req, res, next) {
   .then((weather) => {
       res.locals.temp = Math.round(weather.data.currently.temperature);
       res.locals.summary = weather.data.currently.summary;
+      res.locals.forecast = weather.data.daily.data;
       return next();
      }).catch((err) => {
       console.log(err);
@@ -40,6 +41,7 @@ function geoLocateCall (req, res, next) {
     }).then((response) => {
       res.locals.temperature = Math.round(response.data.currently.temperature);
       res.locals.geolocatesum = response.data.currently.summary;
+      res.locals.geoForecast = response.data.daily.data;
       return next();
     });
 }
