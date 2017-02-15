@@ -30,7 +30,7 @@
         <% } else { %>
       <h2 class="text-center">Current Weather In <%= neighborhood %>, <%= city %></h2>
       <h1 class="temp text-center">Temperature: <%= temp %>  °F</h1>
-      <h1 class="temp text-center">Summary: <%= summary %></h1>
+      <h1 class="temp text-center"><%= summary %></h1>
       <h3 class="text-center">Next 8 Days:</h3>
       <div class="forecast container row">
         <% forecast.forEach(function(data, index) { %>
