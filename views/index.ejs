@@ -15,11 +15,11 @@
       <h2 class="text-center">Current Weather In Your Area:</h2>
       <h1 class="temp text-center">Temp: <%= geoLocateTemp %> °F</h1>
       <h1 class="temp text-center"><%= geoLocateSum %></h1>
-      <h3 class="temp text-center">Next 8 Days:</h3>
+      <h3 class="text-center">Next 8 Days:</h3>
       <div class="forecast row">
         <% geoForecast.forEach(function(data, index) { %>
-              <div class="daily col-md-3">
-                <p><%= moment.unix(data.time).format('ddd MMM Do') %></p>
+              <div class="daily text-center col-md-3">
+                <p><b><%= moment.unix(data.time).format('ddd MMM Do') %></b></p>
                 <p>High: <%= Math.round(data.temperatureMax) %> °F</p>
                 <p>Low: <%= Math.round(data.temperatureMin) %> °F</p>
                 <p>Chance Of Rain: <%= parseInt(data.precipProbability * 100) %>%</p>

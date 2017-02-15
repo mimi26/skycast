@@ -32,9 +32,11 @@ h1, h2, h3, form {
   align-self: center;
 }
 
+.mimi {
+  float: right;
+}
+
 footer {
-  display: flex;
-  justify-content: space-between;
   margin-top: 200px;
   font-size: 12px;
 }
