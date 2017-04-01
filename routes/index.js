@@ -10,7 +10,6 @@ router.get('/', apiCall.geoLocateCall, function(req, res, next) {
   const geoLocateTemp = res.locals.temperature;
   const geoLocateSum = res.locals.geolocatesum;
   const geoForecast = res.locals.geoForecast;
-  //console.log('this is geoForecast:', forecast);
   res.render('index', {
     geoLocateTemp: geoLocateTemp,
     geoLocateSum: geoLocateSum,
@@ -25,7 +24,6 @@ router.post('/', apiCall.geocodeCall, apiCall.darkSkyCall, function(req, res, ne
   const temp = res.locals.temp;
   const summary = res.locals.summary;
   const forecast = res.locals.forecast;
-  console.log('this is forecast:', forecast);
   const geoLocateTemp = undefined;
   const geoLocateSum = undefined;
   const geoForecast = undefined;
