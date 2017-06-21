@@ -12,8 +12,7 @@ function geocodeCall (req, res, next) {
     //store user location data returned from api call in res.locals
     res.locals.lat = info.data.results[0].geometry.location.lat;
     res.locals.lng = info.data.results[0].geometry.location.lng;
-    res.locals.city = info.data.results[0].address_components[3].long_name;
-    res.locals.neighborhood = info.data.results[0].address_components[2].long_name;
+    res.locals.address = info.data.results[0].formatted_address;
 
     return next();//like a boss
   }).catch((err) => {

@@ -19,8 +19,7 @@ router.get('/', apiCall.geoLocateCall, function(req, res, next) {
 });
 
 router.post('/', apiCall.geocodeCall, apiCall.darkSkyCall, function(req, res, next) {
-  const city = res.locals.city;
-  const neighborhood = res.locals.neighborhood;
+  const address = res.locals.address;
   const temp = res.locals.temp;
   const summary = res.locals.summary;
   const forecast = res.locals.forecast;
@@ -28,8 +27,7 @@ router.post('/', apiCall.geocodeCall, apiCall.darkSkyCall, function(req, res, ne
   const geoLocateSum = undefined;
   const geoForecast = undefined;
   res.render('index', {
-    city: city,
-    neighborhood: neighborhood,
+    address: address,
     temp: temp,
     summary: summary,
     forecast: forecast,
